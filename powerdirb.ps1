@@ -39,6 +39,7 @@ try {
     # Get target and wordlist URL
     $target = Read-Host "What is your target?"
     $url = Read-Host "Where is your wordlist?"
+    $ext = Read-Host "What extension do you want to use (example: .pdf - leave blank for none)?"
     Write-Host "`nResults:" -ForegroundColor Green
     Write-Host "----------------------------------------------------" -ForegroundColor Green
 
@@ -54,7 +55,7 @@ try {
     # Iterate over each word in the list
     foreach ($word in $wordList) {
         if (-not [string]::IsNullOrWhiteSpace($word)) {
-            $full = "$target/$word"
+            $full = "$target/$word$ext"
             # Make the web request if the response is 200/405/302, print them with different colors
             try {
                 $response = Invoke-WebRequest -Uri $full -Method Get -ErrorAction Stop
