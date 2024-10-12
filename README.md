@@ -21,6 +21,7 @@ To use **PowerDirb**, clone the repository:
 git clone https://github.com/c1t0ba5h/PowerDib.git
 cd PowerDirb
 
+
 # Example usage
 .\powerdirb.ps1
 
@@ -29,6 +30,7 @@ Launching PowerDirb Scan...
 Found: https://example.com/admin (200)
 Found: https://example.com/login (405)
 
+---
 ## 🛠️ Contributing
 
 We welcome contributions! Please follow these steps:
@@ -39,6 +41,7 @@ We welcome contributions! Please follow these steps:
     Push to your branch: git push origin feature-branch-name.
     Create a pull request.
 
+---
 ## 🙌 Acknowledgments
 
     Inspired by tools like DirBuster and gobuster.
