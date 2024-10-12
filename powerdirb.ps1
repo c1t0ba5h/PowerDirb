@@ -33,13 +33,13 @@ try {
     Write-Host $asciiArt -ForegroundColor Cyan
 
     # Add a pause to keep the console open
-    Write-Host "`nLaunching PowerDirb Scan..." -ForegroundColor Green
+    Write-Host "`n[-] Launching PowerDirb Scan..." -ForegroundColor Green
     Start-Sleep -Seconds 1  # Sleep for one second for style.
 
     # Get target and wordlist URL
-    $target = Read-Host "What is your target?" 
-    $url = Read-Host "Where is your wordlist?"
-    $ext = Read-Host "What extension do you want to use (example: .pdf - leave blank for none)?"
+    $target = Read-Host "[-] What is your target?" 
+    $url = Read-Host "[-] Where is your wordlist?"
+    $ext = Read-Host "[-] What extension do you want to use (example: .pdf - leave blank for none)?"
     Write-Host "`nResults:" -ForegroundColor Green
     Write-Host "----------------------------------------------------" -ForegroundColor Green
 
