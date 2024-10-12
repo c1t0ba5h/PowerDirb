@@ -63,7 +63,7 @@ $url = Read-Host " What is list do you want to use?"
                     } elseif ($response.StatusCode -eq 405) {
                         Write-Host "Found: $full -- response code: 405" -ForegroundColor DarkYellow  # Close to orange
                     } elseif ($response.StatusCode -eq 302) {
-                        Write-Host "Found: $full -- response code: 405" -ForegroundColor Blue  
+                        Write-Host "Found: $full -- response code: 302" -ForegroundColor Blue  
                     }
                 }
             } catch {
