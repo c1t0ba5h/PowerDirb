@@ -19,8 +19,8 @@ try {
         | \      |   |      / |
        /   \_____|___|_____/   \
       /_________________________\
-     /    Scanning Directories    \
-    /         from Above!          \
+     /    Scanning Directories   \
+    /         from Above!         \
     \_____________________________/
           ( )               ( )
        ( (   ) )         ( (   ) )
