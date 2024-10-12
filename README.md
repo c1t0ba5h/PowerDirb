@@ -1,4 +1,4 @@
-# 🚀 PowerDirb: Directory Buster Tool
+# 🚀 PowerDirb: Directory Enumeration Tool
 
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)  
 **PowerDirb** is a lightweight PowerShell-based web directory enumeration tool that dynamically fetches wordlists from external sources. No need to store or transfer large wordlists — fast and efficient scanning right from the terminal!
