@@ -5,7 +5,7 @@ try {
         |    | |  _  | |    |  
     ____|____|_|_|_|_|_|____|____
    /                            \
-  /  PowerDirb: Directory Buster  \
+  /  PowerDirb: Directory Buster \
  /________________________________\
             ________________
           //                \\
