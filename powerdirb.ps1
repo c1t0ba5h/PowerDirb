@@ -56,23 +56,41 @@ try {
     foreach ($word in $wordList) {
         if (-not [string]::IsNullOrWhiteSpace($word)) {
             $full = "$target/$word$ext"
-            # Make the web request if the response is 200/405/302, print them with different colors
+            
             try {
-                $response = Invoke-WebRequest -Uri $full -Method Get -ErrorAction Stop
+                # Make the web request with -MaximumRedirection 0 to prevent automatic redirection
+                $response = Invoke-WebRequest -Uri $full -Method Get -ErrorAction Stop -MaximumRedirection 0
 
-                if ($response.StatusCode -eq 200 -or $response.StatusCode -eq 405 -or $response.StatusCode -eq 302) {
-                    $color = switch ($response.StatusCode) {
-                        200 { "Green" }
-                        405 { "DarkYellow" }
-                        302 { "Blue" }
-                    }
-                    $size = $response.Content.Length
-                    
-                    Write-Host "Found: $full -- (SIZE: $size | response code: $($response.StatusCode))" -ForegroundColor $color
+                # Calculate response size (headers + content)
+                $headerSize = ($response.Headers | Out-String).Length
+                $contentSize = $response.Content.Length
+                $totalSize = $headerSize + $contentSize
+
+                # Determine the color based on the status code
+                $color = switch ($response.StatusCode) {
+                    200 { "Green" }
+                    405 { "DarkYellow" }
+                    { $_ -ge 300 -and $_ -lt 400 } { "Blue" }  # Handles all 3xx redirects
+                    Default { "White" }
                 }
+
+                # Write the result to the console
+                Write-Host "Found: $full -- (SIZE: $totalSize bytes | response code: $($response.StatusCode))" -ForegroundColor $color
+
             } catch {
-                # Don't print 404s or other errors to screen
-                continue
+                # Handle redirection exceptions explicitly
+                if ($_.Exception.Response -and $_.Exception.Response.StatusCode -ge 300 -and $_.Exception.Response.StatusCode -lt 400) {
+                    $redirectResponse = $_.Exception.Response
+
+                    # Extract the Location header if it exists (for redirects)
+                    $location = $redirectResponse.Headers["Location"]
+
+                    # Output the redirection information to the console
+                    Write-Host "Redirect: $full -> $location (response code: $($redirectResponse.StatusCode))" -ForegroundColor Blue
+                } else {
+                    # Continue silently for other errors (like 404)
+                    continue
+                }
             }
         }
     }
