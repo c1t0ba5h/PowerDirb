@@ -6,52 +6,24 @@
 ---
 
 ## 🌟 Features
-- 🚀 Real-time wordlist fetching from external hosts
-- 🔍 Supports status-based filtering (e.g., 200, 405)
-- ⚡ Simple and easy to use in PowerShell environments
-- 📋 Outputs results in color-coded format (200 in green, 405 in orange)
+- 🚀 **Real-time wordlist fetching** from external hosts.
+- 🔍 **Status-based filtering** (e.g., 200, 405).
+- ⚡ **Easy to use** in PowerShell environments.
+- 📋 **Color-coded output** (200 in green, 405 in orange).
 
 ---
 
 ## 📦 Installation
-To use **PowerDirb**, clone the repository:
+To install **PowerDirb**, clone the repository:
 
 ```bash
 git clone https://github.com/your-username/PowerDirb.git
 cd PowerDirb
-```
-##🚀 Usage
-
-    Open PowerShell.
-    Run the script you will be prompted for a target and wordlist.
-
-# Example usage
-```
-.\powerdirb.ps1 
-```
-
-##🎥 Example Output
 
 ```
-Launching PowerDirb Scan...
-Found: https://example.com/admin (200)
-Found: https://example.com/login (405)
+## 🚀 Usage
+
 ```
----
-
-##🛠️ Contributing
-
-We welcome contributions! Please follow these steps:
-
-    Fork the repository.
-    Create a new branch: git checkout -b feature-branch-name.
-    Commit your changes: git commit -m "Add feature".
-    Push to your branch: git push origin feature-branch-name.
-    Create a pull request.
-
-##🙌 Acknowledgments
-
-    Inspired by tools like DirBuster and gobuster.
-
-
+.\powerdirb.ps1
+```
 
