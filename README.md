@@ -29,7 +29,7 @@ Launching PowerDirb Scan...
 Found: https://example.com/admin (200)
 Found: https://example.com/login (405)
 
-🛠️ Contributing
+## 🛠️ Contributing
 
 We welcome contributions! Please follow these steps:
 
@@ -39,7 +39,6 @@ We welcome contributions! Please follow these steps:
     Push to your branch: git push origin feature-branch-name.
     Create a pull request.
 
-🙌 Acknowledgments
+## 🙌 Acknowledgments
 
     Inspired by tools like DirBuster and gobuster.
-    Thanks to the open-source community for the tools and resources that made this project possible.
