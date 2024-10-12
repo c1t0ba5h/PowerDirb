@@ -34,6 +34,7 @@ try {
 
     # Add a pause to keep the console open
     Write-Host "`n[-] Launching PowerDirb Scan..." -ForegroundColor Green
+    Write-Host "----------------------------------------------------" -ForegroundColor Green
     Start-Sleep -Seconds 1  # Sleep for one second for style.
 
     # Get target and wordlist URL
