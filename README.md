@@ -37,3 +37,10 @@ Found: https://example.com/login (405)
 ---
 
 ## 🛠️ Contributing
+We welcome contributions!
+
+## 🙌 Acknowledgments
+
+Inspired by: Tools like DirBuster and gobuster.
+
+
