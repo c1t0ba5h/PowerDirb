@@ -34,8 +34,8 @@ try {
 
     # Add a pause to keep the console open
     Write-Host "`nLaunching PowerDirb Scan..." -ForegroundColor Green
-    Start-Sleep -Seconds 1  # Simulate some process
-
+    Start-Sleep -Seconds 1  # Sleep for one second for style.
+    #Get target/wordlist
     $target = Read-Host "What is your target?"
     $url = Read-Host "What list do you want to use?"
     Write-Host "`nResults:" -ForegroundColor Green
@@ -49,7 +49,7 @@ try {
     foreach ($word in $wordList) {
         if (-not [string]::IsNullOrWhiteSpace($word)) {
             $full = $target + "/" + $word
-
+            #Make the web request if the web requests are 200/405/302 print them with diffrent colors
             try {
                 $response = Invoke-WebRequest -Uri $full -Method Get -ErrorAction Stop
 
@@ -62,7 +62,7 @@ try {
                     Write-Host "Found: $full -- response code: $($response.StatusCode)" -ForegroundColor $color
                 }
             } catch {
-                # Silently ignore any errors
+                # Don't print 404s to screen
                 continue
             }
         }
