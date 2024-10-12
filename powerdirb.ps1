@@ -37,7 +37,7 @@ try {
     Start-Sleep -Seconds 1  # Sleep for one second for style.
 
     # Get target and wordlist URL
-    $target = Read-Host "What is your target?"
+    $target = Read-Host "What is your target?" 
     $url = Read-Host "Where is your wordlist?"
     $ext = Read-Host "What extension do you want to use (example: .pdf - leave blank for none)?"
     Write-Host "`nResults:" -ForegroundColor Green
@@ -66,7 +66,7 @@ try {
                         405 { "DarkYellow" }
                         302 { "Blue" }
                     }
-                    $size = $response.Headers["Content-Length"]
+                    $size = $response.Content.Length
                     
                     Write-Host "Found: $full -- (SIZE: $size | response code: $($response.StatusCode))" -ForegroundColor $color
                 }
