@@ -38,7 +38,7 @@ try {
 
     # Get target and wordlist URL
     $target = Read-Host "What is your target?"
-    $url = Read-Host "What list do you want to use?"
+    $url = Read-Host "Where is your wordlist?"
     Write-Host "`nResults:" -ForegroundColor Green
     Write-Host "----------------------------------------------------" -ForegroundColor Green
 
@@ -65,7 +65,9 @@ try {
                         405 { "DarkYellow" }
                         302 { "Blue" }
                     }
-                    Write-Host "Found: $full -- response code: $($response.StatusCode)" -ForegroundColor $color
+                    $size = $response.Headers["Content-Length"]
+                    
+                    Write-Host "Found: $full -- (SIZE: $size | response code: $($response.StatusCode))" -ForegroundColor $color
                 }
             } catch {
                 # Don't print 404s or other errors to screen
