@@ -18,7 +18,7 @@
 To use **PowerDirb**, clone the repository:
 
 ```bash
-git clone https://github.com/your-username/PowerDirb.git
+git clone https://github.com/c1t0ba5h/PowerDib.git
 cd PowerDirb
 
 # Example usage
