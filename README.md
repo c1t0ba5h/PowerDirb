@@ -29,9 +29,12 @@ cd PowerDirb
 ## 🎥 Example Output
 
 ```
-Launching PowerDirb Scan...
-Found: https://example.com/admin (200)
-Found: https://example.com/login (405)
+Results:
+----------------------------------------------------
+Found: http://127.0.0.1/administrador -- response code: 200                                                             
+----------------------------------------------------                                                                    
+
+Finished Scan at: 10/12/2024 1:28:54 PM
 ```
 
 ---
