@@ -40,8 +40,15 @@ try {
     $target = Read-Host "[-] What is your target (include: http:// or https://)?" 
     $url = Read-Host "[-] Where is your wordlist?"
     $ext = Read-Host "[-] What extension do you want to use (example: .pdf - leave blank for none)?"
+    $session = Read-Host "[-] Enter your session token (leave blank if not applicable)"
     Write-Host "`nResults:" -ForegroundColor Green
     Write-Host "----------------------------------------------------" -ForegroundColor Green
+
+    # Set headers if a session token is provided
+    $headers = @{}
+    if (-not [string]::IsNullOrWhiteSpace($session)) {
+        $headers["Cookie"] = "session=$session"
+    }
 
     # Fetch the wordlist
     try {
@@ -57,8 +64,8 @@ try {
         if (-not [string]::IsNullOrWhiteSpace($word)) {
             $full = "$target/$word$ext"
             try {
-                # Make the web request without following redirects
-                $response = Invoke-WebRequest -Uri $full -Method Get -ErrorAction Stop -MaximumRedirection 0
+                # Make the web request without following redirects, with optional headers
+                $response = Invoke-WebRequest -Uri $full -Method Get -Headers $headers -ErrorAction Stop -MaximumRedirection 0
 
                 # Calculate response size (headers + content)
                 $headerSize = ($response.Headers | Out-String).Length
