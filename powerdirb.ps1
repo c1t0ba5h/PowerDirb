@@ -37,17 +37,21 @@ try {
     Start-Sleep -Seconds 1  # Sleep for style
 
     # Get target and wordlist URL
-    $target = Read-Host "[-] What is your target (include: http:// or https://)?" 
+    $target = Read-Host "[-] What is your target (include: http:// or https://)?"
     $url = Read-Host "[-] Where is your wordlist?"
     $ext = Read-Host "[-] What extension do you want to use (example: .pdf - leave blank for none)?"
-    $session = Read-Host "[-] Enter your session token (leave blank if not applicable)"
+    $session = Read-Host "[-] Enter your cookie (leave blank if not applicable)"
+    $authToken = Read-Host "[-] Enter your Authorization token (leave blank if not applicable)"
     Write-Host "`nResults:" -ForegroundColor Green
     Write-Host "----------------------------------------------------" -ForegroundColor Green
 
-    # Set headers if a session token is provided
+    # Set headers based on provided input
     $headers = @{}
     if (-not [string]::IsNullOrWhiteSpace($session)) {
         $headers["Cookie"] = "session=$session"
+    }
+    if (-not [string]::IsNullOrWhiteSpace($authToken)) {
+        $headers["Authorization"] = "Bearer $authToken"
     }
 
     # Fetch the wordlist
