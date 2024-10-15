@@ -62,6 +62,8 @@ PS /home/c1t0> . '/home/c1t0/PowerDirb/powerdirb.ps1'
 [-] What is your target (include: http:// or https://)?: http://127.0.0.1
 [-] Where is your wordlist?: https://raw.githubusercontent.com/v0re/dirb/refs/heads/master/wordlists/common.txt
 [-] What extension do you want to use (example: .pdf - leave blank for none)?: 
+[-] Enter your cookie (leave blank if not applicable): 
+[-] Enter your Authorization token (leave blank if not applicable):
 
 Results:
 ----------------------------------------------------
