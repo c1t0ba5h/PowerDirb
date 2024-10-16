@@ -6,7 +6,7 @@
 ---
 
 ## 🌟 Features
-- 🚀 **Real-time wordlist fetching** from both external host and your local machine.
+- 🚀 **Real-time wordlist fetching** from both external hosts and your local machine.
 - 🔍 **Status-based filtering** (e.g., 200, 405).
 - ⚡ **Easy to use** in PowerShell environments.
 - 📋 **Color-coded output** (200 in green, 405 in orange, 302 in blue).
