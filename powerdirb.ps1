@@ -36,9 +36,9 @@ try {
     Write-Host "----------------------------------------------------" -ForegroundColor Green
     Start-Sleep -Seconds 1  # Sleep for style
 
-    # Get target and wordlist URL
+    # Get target, wordlist file or URL, and other inputs
     $target = Read-Host "[-] What is your target (include: http:// or https://)?"
-    $url = Read-Host "[-] Where is your wordlist?"
+    $wordlistInput = Read-Host "[-] Provide local wordlist file path or a hosted wordlist URL"
     $ext = Read-Host "[-] What extension do you want to use (example: .pdf - leave blank for none)?"
     $session = Read-Host "[-] Enter your cookie (leave blank if not applicable)"
     $authToken = Read-Host "[-] Enter your Authorization token (leave blank if not applicable)"
@@ -48,27 +48,39 @@ try {
     # Set headers based on provided input
     $headers = @{}
     if (-not [string]::IsNullOrWhiteSpace($session)) {
-        $headers["Cookie"] = "session=$session"
+        $headers.Add('Cookie', $session)
     }
     if (-not [string]::IsNullOrWhiteSpace($authToken)) {
-        $headers["Authorization"] = "Bearer $authToken"
+        $headers.Add('Authorization', $authToken)
     }
 
-    # Fetch the wordlist
-    try {
-        $response = Invoke-WebRequest -Uri $url -UseBasicParsing -ErrorAction Stop
-        $wordList = $response.Content -split "`r?`n"
-    } catch {
-        Write-Host "Could not retrieve the wordlist: $($_.Exception.Message)" -ForegroundColor Red
-        return
+    # Read wordlist based on local file or URL
+    $wordlist = @()
+    if (Test-Path $wordlistInput) {
+        # If it's a local file
+        Write-Host "[-] Reading wordlist from local file..." -ForegroundColor Yellow
+        $wordlist = Get-Content $wordlistInput
+    } elseif ($wordlistInput -like "http*") {
+        # If it's a URL
+        Write-Host "[-] Downloading wordlist from URL..." -ForegroundColor Yellow
+        try {
+            $wordlistContent = Invoke-WebRequest -Uri $wordlistInput -UseBasicParsing
+            $wordlist = $wordlistContent.Content -split "`n"
+        } catch {
+            Write-Host "[-] Failed to download wordlist from URL." -ForegroundColor Red
+            exit
+        }
+    } else {
+        Write-Host "[-] Invalid input. Please provide either a valid file path or a URL." -ForegroundColor Red
+        exit
     }
 
-    # Iterate over each word in the list
-    foreach ($word in $wordList) {
-        if (-not [string]::IsNullOrWhiteSpace($word)) {
-            $full = "$target/$word$ext"
+    # Iterate through the wordlist
+    foreach ($dir in $wordlist) {
+        $dir = $dir.Trim()
+        if (-not [string]::IsNullOrWhiteSpace($dir)) {
+            $full = "$target/$dir$ext"
             try {
-                # Make the web request without following redirects, with optional headers
                 $response = Invoke-WebRequest -Uri $full -Method Get -Headers $headers -ErrorAction Stop -MaximumRedirection 0
 
                 # Calculate response size (headers + content)

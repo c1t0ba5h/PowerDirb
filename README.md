@@ -29,7 +29,7 @@ cd PowerDirb
 ## 🎥 Example Output
 
 ```
-PS /home/c1t0> . '/home/c1t0/PowerDirb/powerdirb.ps1'
+PS C:\Users\User\Desktop> .\powerdirb.ps1
          ____   _____   ____  
         |    | |  _  | |    |  
     ____|____|_|_|_|_|_|____|____
