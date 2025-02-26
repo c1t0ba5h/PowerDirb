@@ -1,0 +1,4 @@
+Forbidden: http://scanme.nmap.org//.hta (response code: 403)
+Forbidden: http://scanme.nmap.org//.htaccess (response code: 403)
+Forbidden: http://scanme.nmap.org//.htpasswd (response code: 403)
+Redirect: http://scanme.nmap.org//.svn ->  (response code: MovedPermanently)
